@@ -1,2 +1,4 @@
 .venv
+.env
+desktop.ini
 kubernetes/secrets.yaml
