@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test:ci": "jest --coverage --coverageDirectory=coverage_reports/latest --testPathPatterns=tests/unit tests/integration/in-the-small",
     "test:unit": "jest --coverage --testPathPatterns=tests/unit",
     "test:integration-its": "jest --coverage --testPathPatterns=tests/integration/in-the-small",
     "test:integration-itl": "jest --coverage --testPathPatterns=tests/integration/in-the-large"
