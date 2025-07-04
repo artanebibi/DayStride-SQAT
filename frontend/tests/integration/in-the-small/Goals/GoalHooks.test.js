@@ -1,6 +1,6 @@
 // tests/integration/in-the-small/Goals/GoalHooks.test.js
 import {renderHook, act} from '@testing-library/react';
-import useGoal from '../../../../src/hooks/useGoal.js';
+import useGoal from '../../../../src/hooks/UseGoal.js';
 import {mockGoals, mock} from '../mocks/goalMocks.js';
 import '../../../../src/repository/GoalRepository.js';
 import '../mocks/goalMocks.js';

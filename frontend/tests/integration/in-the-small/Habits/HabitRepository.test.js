@@ -9,8 +9,8 @@ describe('HabitRepository', () => {
       refresh: 'test-refresh',
     }));
 
-    delete window.location;
-    window.location = { href: jest.fn() };
+    // delete window.location;
+    // window.location = { href: jest.fn() };
   });
 
   afterAll(() => {
