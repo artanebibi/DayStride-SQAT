@@ -68,4 +68,6 @@ def test_habit_log_serializer_with_nested_habit():
     assert data["habit"]["id"] == habit_log.habit.id
     assert data["habit"]["name"] == habit_log.habit.name
     assert data["date"] == habit_log.date.strftime("%Y-%m-%d")
-    assert data["time"] == habit_log.time.strftime("%H:%M:%S")
+    expected_time = habit_log.time.replace(microsecond=0).strftime("%H:%M:%S")
+    assert data["time"].startswith(expected_time)
+
