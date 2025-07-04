@@ -1,5 +1,6 @@
 import {SimpleGrid} from '@mantine/core';
 import GoalCard from './GoalCard.jsx';
+import React from 'react'
 
 const GoalGrid = ({goals, onEdit, onDelete, onLeaveClick}) => {
     return (

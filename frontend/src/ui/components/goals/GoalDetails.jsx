@@ -1,5 +1,6 @@
 import {Card, Text, Group, Badge, Button, Title, Stack} from "@mantine/core";
 import {IconUserPlus} from "@tabler/icons-react";
+import React from 'react'
 
 const GoalDetails = ({goal, onJoin}) => {
     return (
