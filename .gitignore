@@ -1,4 +1,5 @@
 .venv
+backend/.coverage
 .env
 desktop.ini
 kubernetes/secrets.yaml
