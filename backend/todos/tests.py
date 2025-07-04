@@ -6,6 +6,8 @@ from todos.serializers import TodoTaskSerializer
 from todos.factories import TodoTaskFactory
 from app.factories import UserFactory
 
+pytestmark = pytest.mark.unit
+
 
 @pytest.mark.django_db
 def test_create_todo_task_model():
