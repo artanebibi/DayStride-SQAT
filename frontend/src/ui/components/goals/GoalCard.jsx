@@ -1,5 +1,6 @@
 import {Card, Text, Group, Badge, Button, Title} from '@mantine/core';
 import {IconEdit, IconTrash, IconLogout} from '@tabler/icons-react';
+import React from 'react'
 
 const GoalCard = ({goal, onEditClick, onDeleteClick, onLeaveClick, sharedCount = 0}) => {
     return (

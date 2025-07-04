@@ -1,7 +1,7 @@
 "use client"
 
 import {motion} from "framer-motion";
-
+import React from 'react'
 // Consistent, UI-matching colors
 const BLACK = "#1F2937";     // dark charcoal
 const GREEN = "#22C55E";     // soft vibrant green

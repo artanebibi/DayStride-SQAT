@@ -16,7 +16,7 @@ const useDashboard = () => {
                 setState({data: res.data, loading: false});
             })
             .catch((err) => {
-                console.error("Failed to fetch dashboard data:", err);
+                console.error("Failed to fetch dashboard mocks:", err);
                 setState({data: [], loading: false});
             });
     }, []);

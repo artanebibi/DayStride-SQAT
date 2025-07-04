@@ -24,7 +24,7 @@ const Home = () => {
 
             {/* Right: Animation */}
             <div className="mt-6 md:mt-0 md:w-1/2 flex justify-center">
-                <div className="rounded-3xl shadow-xl bg-white/50 p-6 scale-75">
+                <div className="rounded-3xl shadow-xl bg-white/50 p-6 scale-75" data-testid="animation-wrapper">
                     <PathDrawing/>
                 </div>
             </div>

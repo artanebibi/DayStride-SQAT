@@ -18,7 +18,7 @@ const Dashboard = () => {
                 const res = await DashboardRepository.fetchUserDashboard();
                 setDashboardData(res.data);
             } catch (err) {
-                console.error("Failed to fetch dashboard data", err);
+                console.error("Failed to fetch dashboard mocks", err);
             } finally {
                 setLoading(false);
             }
