@@ -138,7 +138,7 @@ const Habits = () => {
                 </Stack>
             </Card>
 
-            {/* Habit Logs Card */}
+            {/* Habits Logs Card */}
             {logsVisible && (
                 <Card
                     shadow="md"
