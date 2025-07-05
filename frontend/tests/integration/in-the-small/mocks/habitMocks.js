@@ -8,7 +8,7 @@ export const mockHabits = [
     {
         id: 1,
         name: "Habit 1",
-        description: "Description for Habit 1",
+        description: "Description for Habits 1",
         created_at: fixedTimestamp,
         completed: true,
     },

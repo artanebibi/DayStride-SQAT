@@ -1,0 +1,58 @@
+export const mockGoals = [
+  {
+    id: 1,
+    name: 'Learn Spanish',
+    is_public: false,
+    description: "Learning Spanish for college",
+    end_date: "2025-12-01",
+    location: "Skopje",
+  },
+  {
+    id: 2,
+    name: 'Build Side Project',
+    is_public: true,
+    description: "Create a portfolio project",
+    end_date: "2025-08-01",
+    location: "Ohrid",
+  },
+  {
+    id: 3,
+    name: 'Run 5K',
+    is_public: false,
+    description: "Train for a 5K run",
+    end_date: "2025-09-10",
+    location: "Bitola",
+  },
+  {
+    id: 4,
+    name: 'Learn React',
+    is_public: true,
+    description: "Finish a React tutorial series",
+    end_date: "2025-10-05",
+    location: "Skopje",
+  },
+  {
+    id: 5,
+    name: 'Read 10 Books',
+    is_public: false,
+    description: "Read 10 fiction books",
+    end_date: "2025-11-20",
+    location: "Tetovo",
+  },
+  {
+    id: 6,
+    name: 'Daily Journaling',
+    is_public: true,
+    description: "Write daily journal entries",
+    end_date: "2025-12-31",
+    location: "Prilep",
+  },
+  {
+    id: 7,
+    name: 'No Sugar Challenge',
+    is_public: false,
+    description: "Avoid all added sugar for 30 days",
+    end_date: "2025-08-20",
+    location: "Kumanovo",
+  }
+];

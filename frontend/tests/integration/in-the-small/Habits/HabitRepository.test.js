@@ -30,7 +30,7 @@ describe('HabitRepository', () => {
   test('create', async () => {
     const payload = {
       name: 'Habit 1',
-      description: 'Description for Habit 1',
+      description: 'Description for Habits 1',
       completed: true,
       created_at: Date.now(),
     };
