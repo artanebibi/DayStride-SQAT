@@ -1,27 +1,30 @@
 import pytest
 from django.urls import reverse
-from rest_framework import status
 from rest_framework.test import APIClient
 from django.contrib.auth.models import User
 from datetime import date, timedelta
 
-pytestmark = [pytest.mark.integration_large]
+pytestmark = [pytest.mark.integration_large, pytest.mark.django_db]
 
-@pytest.mark.django_db
 class TestAPILargeIntegration:
-    @classmethod
-    def setup_class(cls):
-        cls.client = APIClient()
-        cls.user = User.objects.create_user(username="largeruser", password="password123")
 
-        # Obtain JWT tokens
+    @pytest.fixture(autouse=True)
+    def setup_class_fixtures(cls, transactional_db):
+        cls.client = APIClient()
+
+        cls.user_obj = User.objects.create_user(username="largeruser", password="password123")
+
         cls.login_url = reverse('token_obtain_pair')
         cls.refresh_url = reverse('token_refresh')
-        res = cls.client.post(cls.login_url, {"username": "largeruser", "password": "password123"})
+
+        res = cls.client.post(cls.login_url, {
+            "username": "largeruser",
+            "password": "password123"
+        })
         assert res.status_code == 200
+
         cls.token = res.data['access']
         cls.refresh_token = res.data['refresh']
-
         cls.client.credentials(HTTP_AUTHORIZATION=f'Bearer {cls.token}')
 
     def test_jwt_token_refresh(self):
@@ -89,7 +92,6 @@ class TestAPILargeIntegration:
         assert "goals" in res.data
 
     def test_join_and_leave_goal(self):
-        # Create a public goal to join
         payload = {
             "name": "Joinable Goal",
             "description": "Testing join and leave",
@@ -101,12 +103,10 @@ class TestAPILargeIntegration:
         assert res.status_code == 201
         goal_id = res.data['id']
 
-        # Join the goal
         res = self.client.post('/api/goals/join/', {"goal": goal_id}, format='json')
         assert res.status_code == 201
         assert res.data['detail'] == "Goal successfully added to user."
 
-        # Leave the goal
         res = self.client.post('/api/goals/leave/', {"goal": goal_id}, format='json')
         assert res.status_code == 200
         assert res.data['detail'] == "UserGoal successfully removed "

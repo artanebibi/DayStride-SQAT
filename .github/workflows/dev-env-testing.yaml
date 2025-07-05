@@ -6,7 +6,6 @@ on:
 jobs:
   dev-testing:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -29,7 +28,7 @@ jobs:
 
     - name: Run backend integration tests
       run: |
-        docker compose exec backend pytest -m integration_large --disable-warnings --tb=short
+        docker compose exec backend pytest --no-cov -v -ra -m integration_large
 
     - name: Run frontend integration tests
       run: |
