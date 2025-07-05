@@ -25,6 +25,14 @@ jobs:
     - name: Build and start containers
       run: |
         docker compose -f docker-dev.yaml up --build -d
+    - name: Wait for MySQL to be ready
+      run: |
+        echo "Waiting for MySQL to become healthy..."
+        until docker compose exec db mysqladmin ping -h "localhost" --silent; do
+          echo "Waiting for MySQL..."
+          sleep 2
+        done
+
 
     - name: Run backend integration tests
       run: |
