@@ -19,9 +19,9 @@ jobs:
       
     - name: Set Up environment Variables
       run: |
-        echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
-        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-        echo "DJANGO_SECRET=${{ secrets.DJANGO_SECRET }}" >> .env
+        echo "DB_NAME=DEV" >> .env
+        echo "DB_PASSWORD=password" >> .env
+        echo "DJANGO_SECRET=diuwehdibbbiweuhofihoocoiwueroikfi987bg" >> .env
         
     - name: Build and start containers
       run: |
