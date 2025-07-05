@@ -1,7 +1,7 @@
 // tests/integration/in-the-large/Dashboard/DashboardRepositoryLive.test.js
 
 import axios from '../../../../src/axios/axios';
-import DashboardRepository from '../../../../src/repository/DashboardRepository';
+import DashboardRepository from '../../../../src/repository/DashBoardRepository';
 import ToDoRepository from '../../../../src/repository/ToDoRepository';
 import HabitRepository from '../../../../src/repository/HabitRepository';
 import GoalRepository from '../../../../src/repository/GoalRepository';

@@ -30,7 +30,9 @@ services:
       - DJANGO_SECRET=${DJANGO_SECRET}
 
   frontend:
-    image: edon505/daystride-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: dockerfile-dev
     restart: on-failure:6
     ports:
       - "80:80"

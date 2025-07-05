@@ -15,16 +15,16 @@ jobs:
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
-      
+
     - name: Set Up environment Variables
       run: |
         echo "DB_NAME=DEV" >> .env
         echo "DB_PASSWORD=password" >> .env
         echo "DJANGO_SECRET=diuwehdibbbiweuhofihoocoiwueroikfi987bg" >> .env
-        
+
     - name: Build and start containers
       run: |
-        docker compose up -d
+        docker compose -f docker-dev.yaml up --build -d
 
     - name: Run backend integration tests
       run: |
