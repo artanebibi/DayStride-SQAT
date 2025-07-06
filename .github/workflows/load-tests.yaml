@@ -1,13 +1,8 @@
 name: K6 Load Testing Pipeline
 
-#on:
-#  repository_dispatch:
-#    types: [run-k6-load-test]
-#  workflow_dispatch:
-
 on:
   workflow_run:
-    workflows: [ 'Deploy to Staging' ]
+    workflows: ['Deploy to Staging']
     types:
       - completed
 
@@ -15,11 +10,11 @@ on:
 
 jobs:
   k6-load-test:
-#    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     env:
-      BASE_URL: ${{ vars.EC2_PUBLIC_IP }}  # Set this secret in your repository for flexibility
+      BASE_URL: ${{ vars.EC2_PUBLIC_IP }}
 
     steps:
       - name: Checkout repository
@@ -43,24 +38,8 @@ jobs:
         run: |
           k6 run --summary-export=summary.json ./stagingTests/load/daystride_ec2_load_testing.js
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Clone k6-reporter
-        run: |
-          git clone https://github.com/majodev/k6-reporter.git
-          cd k6-reporter
-          npm install --verbose
-
-      - name: Generate HTML report
-        run: |
-          cd k6-reporter
-          node cli.js ../summary.json ../report.html
-
-      - name: Upload HTML report artifact
+      - name: Upload k6 JSON report artifact
         uses: actions/upload-artifact@v4
         with:
-          name: k6-loadtest-report
-          path: report.html
+          name: k6-loadtest-summary-json
+          path: summary.json
