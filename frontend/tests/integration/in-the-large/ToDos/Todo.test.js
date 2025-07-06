@@ -1,6 +1,6 @@
 import axios from '../../../../src/axios/axios';
 import ToDoRepository from '../../../../src/repository/ToDoRepository';
-import { mockTodos } from '../Mock/mockTodos';
+import { todosArray } from '../Data/todosArray.js';
 
 describe('ToDoRepository', () => {
   const uniqueId = Date.now();
@@ -26,7 +26,7 @@ describe('ToDoRepository', () => {
 
     localStorage.setItem('tokens', JSON.stringify(loginResponse.data));
 
-    for (const todo of mockTodos) {
+    for (const todo of todosArray) {
       try {
         const res = await ToDoRepository.create(todo);
         expect([200, 201]).toContain(res.status);
@@ -58,7 +58,7 @@ describe('ToDoRepository', () => {
       }));
 
     const fetchedNormalized = normalize(fetched);
-    const mockNormalized = normalize(mockTodos);
+    const mockNormalized = normalize(todosArray);
 
     const sortFn = (a, b) => a.name.localeCompare(b.name);
     fetchedNormalized.sort(sortFn);

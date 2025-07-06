@@ -1,6 +1,6 @@
 import axios from '../../../../src/axios/axios';
 import GoalRepository from '../../../../src/repository/GoalRepository.js';
-import {mockGoals} from '../Mock/mockGoals.js';
+import {goalsArray} from '../Data/goalsArray.js';
 
 describe('GoalRepository', () => {
     const uniqueId = Date.now();
@@ -27,7 +27,7 @@ describe('GoalRepository', () => {
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${loginRes.data.access}`;
 
-        for (const goal of mockGoals) {
+        for (const goal of goalsArray) {
             const {id, is_owner, sharedCount, ...payload} = goal;
 
             payload.is_public = goal.is_public;
@@ -81,7 +81,7 @@ describe('GoalRepository', () => {
     });
 
     test('update', async () => {
-        const goal = mockGoals[0];
+        const goal = goalsArray[0];
         const updatedData = {...goal, name: 'Updated Goal Name'};
         const res = await GoalRepository.update(createdGoalIds[0], updatedData);
         expect(res.status).toBe(200);

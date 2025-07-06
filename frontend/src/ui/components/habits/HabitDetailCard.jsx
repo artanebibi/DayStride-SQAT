@@ -1,4 +1,4 @@
-// src/ui/components/habits/HabitDetailCard.jsx
+// src/ui-e2e/components/habits/HabitDetailCard.jsx
 import React from 'react';
 import {Card, Text, Badge, Group, Title, Button} from '@mantine/core';
 import {IconEdit, IconTrash} from '@tabler/icons-react';

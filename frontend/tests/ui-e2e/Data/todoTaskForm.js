@@ -14,8 +14,6 @@ export async function populateAddTaskForm(page, taskName, taskCategory, taskDesc
 
     const futureDate = new Date();
     futureDate.setDate(futureDate.getDate() + 10);
-
-// If you need it in "YYYY-MM-DD" format for an input[type="date"]:
     const formatted = futureDate.toISOString().split('T')[0];
 
     await page.fill(taskNameField, taskName)

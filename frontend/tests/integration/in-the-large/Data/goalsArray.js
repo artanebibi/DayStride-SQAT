@@ -1,4 +1,4 @@
-export const mockGoals = [
+export const goalsArray = [
   {
     id: 1,
     name: 'Learn Spanish',

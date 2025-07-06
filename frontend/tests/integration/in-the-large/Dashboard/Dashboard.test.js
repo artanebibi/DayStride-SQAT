@@ -5,9 +5,9 @@ import DashboardRepository from '../../../../src/repository/DashBoardRepository'
 import ToDoRepository from '../../../../src/repository/ToDoRepository';
 import HabitRepository from '../../../../src/repository/HabitRepository';
 import GoalRepository from '../../../../src/repository/GoalRepository';
-import { mockTodos } from '../Mock/mockTodos';
-import { mockHabits } from '../Mock/mockHabits';
-import { mockGoals } from '../Mock/mockGoals';
+import { todosArray } from '../Data/todosArray';
+import { habitsArray } from '../Data/habitsArray.js';
+import { goalsArray } from '../Data/goalsArray.js';
 
 describe('DashboardRepository', () => {
   const uniqueId = Date.now();
@@ -58,7 +58,7 @@ describe('DashboardRepository', () => {
 
     localStorage.setItem('tokens', JSON.stringify(loginRes.data));
 
-    for (const todo of mockTodos) {
+    for (const todo of todosArray) {
       if (new Date(todo.due_date) >= new Date()) {
         try {
           const res = await ToDoRepository.create(todo);
@@ -70,13 +70,13 @@ describe('DashboardRepository', () => {
       }
     }
 
-    for (const habit of mockHabits) {
+    for (const habit of habitsArray) {
       const res = await HabitRepository.create(habit);
       expect([200, 201]).toContain(res.status);
       createdHabitIds.push(res.data.id);
     }
 
-    for (const goal of mockGoals) {
+    for (const goal of goalsArray) {
       if (new Date(goal.end_date) >= new Date()) {
         const res = await GoalRepository.create(goal);
         expect([200, 201]).toContain(res.status);
@@ -108,11 +108,11 @@ describe('DashboardRepository', () => {
     expect(dashboard).toHaveProperty('habits');
     expect(dashboard).toHaveProperty('goals');
 
-    const expectedTodos = mockTodos
+    const expectedTodos = todosArray
       .filter(todo => new Date(todo.due_date) >= new Date())
       .map(normalizeTodo);
-    const expectedHabits = mockHabits.map(normalizeHabit);
-    const expectedGoals = mockGoals
+    const expectedHabits = habitsArray.map(normalizeHabit);
+    const expectedGoals = goalsArray
       .filter(goal => new Date(goal.end_date) >= new Date())
       .map(normalizeGoal);
 

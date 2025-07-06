@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
-import {test_user} from './Data/user.js';
-import {loginUser, registerUser} from './Data/authHelpers.js'
-import {populateAddTaskForm} from './Data/todoTaskForm.js'
+import {test_user} from '../Data/user.js';
+import {loginUser, registerUser} from '../Data/authHelpers.js'
+import {populateAddTaskForm} from '../Data/todoTaskForm.js'
 
 test('Dropdown menu cancel button navigates back to /todos', async ({page}) => {
     loginUser(page, test_user)

@@ -3,7 +3,7 @@
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 export default {
-  testDir: './tests/ui',
+  testDir: './tests/ui-e2e',
   timeout: 30 * 1000,
   expect: {
     timeout: 5000, // 5 sec for expect()

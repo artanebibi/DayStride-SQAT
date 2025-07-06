@@ -1,4 +1,4 @@
-// src/ui/components/todos/TodoInfoCard.jsx
+// src/ui-e2e/components/todos/TodoInfoCard.jsx
 import React from "react";
 import {Card, Text, Group, Title, Badge, Switch} from "@mantine/core";
 import {IconCalendar} from "@tabler/icons-react";
