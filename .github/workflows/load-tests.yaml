@@ -10,7 +10,8 @@ on:
     workflows: [ 'Deploy to Staging' ]
     types:
       - completed
-    workflow_dispatch:
+
+  workflow_dispatch:
 
 jobs:
   k6-load-test:
