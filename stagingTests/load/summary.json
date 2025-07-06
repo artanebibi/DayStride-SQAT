@@ -1,0 +1,161 @@
+{
+    "metrics": {
+        "http_reqs": {
+            "count": 115,
+            "rate": 3.813408009544901
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "checks": {
+            "passes": 115,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_connecting": {
+            "max": 1.1438,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.014942608695652173,
+            "min": 0,
+            "med": 0
+        },
+        "iteration_duration": {
+            "min": 3009.9095,
+            "med": 3015.0464,
+            "max": 3031.2441,
+            "p(90)": 3021.31172,
+            "p(95)": 3021.74756,
+            "avg": 3016.153347826087
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 3
+        },
+        "http_req_duration": {
+            "p(90)": 4.205640000000001,
+            "p(95)": 4.41752,
+            "avg": 2.446985217391304,
+            "min": 0.5045,
+            "med": 1.8665,
+            "max": 5.2492,
+            "thresholds": {
+                "p(95)<1000": false
+            }
+        },
+        "vus_max": {
+            "max": 3,
+            "value": 3,
+            "min": 3
+        },
+        "data_received": {
+            "count": 103500,
+            "rate": 3432.0672085904107
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 2.446985217391304,
+            "min": 0.5045,
+            "med": 1.8665,
+            "max": 5.2492,
+            "p(90)": 4.205640000000001,
+            "p(95)": 4.41752
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 115,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "iterations": {
+            "count": 23,
+            "rate": 0.7626816019089802
+        },
+        "http_req_blocked": {
+            "avg": 0.09038173913043479,
+            "min": 0,
+            "med": 0,
+            "max": 8.5661,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_sent": {
+            "count": 8510,
+            "rate": 282.19219270632266
+        },
+        "http_req_sending": {
+            "max": 0.5169,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.012499130434782608,
+            "min": 0,
+            "med": 0
+        },
+        "http_req_waiting": {
+            "p(90)": 4.08818,
+            "p(95)": 4.17393,
+            "avg": 2.3857243478260868,
+            "min": 0.5045,
+            "med": 1.8479,
+            "max": 5.2492
+        },
+        "http_req_receiving": {
+            "med": 0,
+            "max": 0.9712,
+            "p(90)": 0,
+            "p(95)": 0.5373199999999999,
+            "avg": 0.04876173913043478,
+            "min": 0
+        }
+    },
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "GET / status 200": {
+                    "path": "::GET / status 200",
+                    "id": "4032b491b7fafac4f6a4ef1bad8b59f0",
+                    "passes": 23,
+                    "fails": 0,
+                    "name": "GET / status 200"
+                },
+                "GET /dashboard status 200": {
+                    "name": "GET /dashboard status 200",
+                    "path": "::GET /dashboard status 200",
+                    "id": "b33293cebd48ee829c50d967508dac9c",
+                    "passes": 23,
+                    "fails": 0
+                },
+                "GET /goalhub status 200": {
+                    "name": "GET /goalhub status 200",
+                    "path": "::GET /goalhub status 200",
+                    "id": "bf0c0dc2b0ab5d98388362051a280ad7",
+                    "passes": 23,
+                    "fails": 0
+                },
+                "GET /goals status 200": {
+                    "fails": 0,
+                    "name": "GET /goals status 200",
+                    "path": "::GET /goals status 200",
+                    "id": "e8df8f578e751e3a126c96962bc41d16",
+                    "passes": 23
+                },
+                "GET /dashboard (return) status 200": {
+                    "name": "GET /dashboard (return) status 200",
+                    "path": "::GET /dashboard (return) status 200",
+                    "id": "406054bdbde5616765e12626abe2bd13",
+                    "passes": 23,
+                    "fails": 0
+                }
+            },
+        "name": ""
+    }
+}

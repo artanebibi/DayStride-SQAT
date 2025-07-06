@@ -1,0 +1,59 @@
+name: K6 Load Testing Pipeline
+
+#on:
+#  repository_dispatch:
+#    types: [run-k6-load-test]
+#  workflow_dispatch:
+
+on:
+  workflow_run:
+    workflows: [ 'Deploy to Staging' ]
+    types:
+      - completed
+    workflow_dispatch:
+
+jobs:
+  k6-load-test:
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: ${{ secrets.EC2_PUBLIC_IP }}  # Set this secret in your repository for flexibility
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install k6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnupg software-properties-common wget
+          wget -q -O - https://dl.k6.io/key.gpg | sudo apt-key add -
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee -a /etc/apt/sources.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run k6 Load Test with dynamic BASE_URL
+        run: |
+          k6 run --summary-export=summary.json ./stagingTests/load/daystride_ec2_load_testing.js
+
+      - name: Clone k6-reporter
+        run: |
+          git clone https://github.com/majodev/k6-reporter.git
+          cd k6-reporter
+          npm install
+
+      - name: Generate HTML report
+        run: |
+          cd k6-reporter
+          node cli.js ../summary.json ../report.html
+
+      - name: Upload HTML report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-loadtest-report
+          path: report.html
