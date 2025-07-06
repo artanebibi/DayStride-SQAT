@@ -70,30 +70,31 @@ jobs:
           echo "✅ EC2 Instance is ready!"
           echo "🌍 Public IP Address: http://${{ steps.get_ip.outputs.public_ip }}"
           echo "============================================"
-            - name: Upload Public IP to Repo Secret
+
+      - name: Upload Public IP to Repo Secret
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           PUBLIC_IP: ${{ steps.get_ip.outputs.public_ip }}
           REPO: ${{ github.repository }}
-          run: |
+        run: |
             # Get public key for encrypting secret
             RESPONSE=$(curl -s -H "Authorization: token $GH_PAT" \
               https://api.github.com/repos/$REPO/actions/secrets/public-key)
-  
+    
             KEY_ID=$(echo "$RESPONSE" | jq -r '.key_id')
             KEY=$(echo "$RESPONSE" | jq -r '.key')
-  
+    
             # Encrypt the PUBLIC_IP using GitHub's public key
             ENCRYPTED_VALUE=$(echo -n "$PUBLIC_IP" | \
               openssl pkeyutl -encrypt -pubin -inkey <(echo "$KEY" | base64 -d) | \
               base64 -w 0)
-  
+    
             # Upload the encrypted secret
             curl -s -X PUT -H "Authorization: token $GH_PAT" \
               -H "Content-Type: application/json" \
               -d "{\"encrypted_value\":\"$ENCRYPTED_VALUE\",\"key_id\":\"$KEY_ID\"}" \
               https://api.github.com/repos/$REPO/actions/secrets/EC2_PUBLIC_IP
-  
+    
             echo "✅ Uploaded PUBLIC_IP as secret EC2_PUBLIC_IP"
 
 
