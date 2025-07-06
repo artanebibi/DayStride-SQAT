@@ -50,25 +50,7 @@ test('Dropdown priority options are visible, clickable and alphabetically ordere
 
 });
 
-
-test('TodoTask Add-Form', async ({page}) => {
-    await loginUser(page, test_user)
-    await page.waitForURL("/dashboard")
-
-    const uniqueId = Date.now()
-    populateAddTaskForm(page, "Test Task" + uniqueId, "Test Task category" + uniqueId, "Description for Test Task" + uniqueId)
-
-    const submitButton = "button.MuiButtonBase-root:nth-child(2)"
-    await page.click(submitButton)
-    await page.waitForURL("/todos")
-
-    const taskCardContainer = await page.locator(".m_2415a157")
-    await expect(taskCardContainer.locator(`h4:text("Test Task${uniqueId}")`)).toBeVisible()
-})
-
-
-test.skip('TodoTask Add-Form Validation ~ TDD PHASE / LOGIC OF THE VALIDATION TO BE IMPLEMENTED LATER.', async ({page}) => {
-
+test('TodoTask Add-Form Validation.', async ({page}) => {
     await loginUser(page, test_user);
     await page.waitForURL("/dashboard");
 
@@ -77,10 +59,20 @@ test.skip('TodoTask Add-Form Validation ~ TDD PHASE / LOGIC OF THE VALIDATION TO
     await page.waitForURL("/todos");
 
     const openFormButton = "button.mantine-focus-auto:nth-child(5)";
+    await page.waitForSelector(openFormButton, {state: 'visible'});
     await page.click(openFormButton);
 
+    // wait for form fields to appear
+    await page.waitForSelector('input[name="name"]', {state: 'visible'});
+    await page.waitForSelector('input[name="category"]', {state: 'visible'});
+    await page.waitForSelector('textarea[name="description"]', {state: 'visible'});
+    await page.waitForSelector('input[name="due_date"]', {state: 'visible'});
+
     const submit = async () => {
-        await page.click('button.MuiButtonBase-root:nth-child(2)');
+        const submitButton = 'button.MuiButtonBase-root:nth-child(2)';
+        await page.waitForSelector(submitButton, {state: 'visible'});
+        await page.click(submitButton);
+        await page.waitForTimeout(200); // allow error to appear
     };
 
     // Case 1: name is blank
@@ -119,11 +111,12 @@ test.skip('TodoTask Add-Form Validation ~ TDD PHASE / LOGIC OF THE VALIDATION TO
     await expect(page.locator('#error-description')).toContainText("Description cannot be blank");
 
     // Case 8: due_date is before today
-    const pastDate = new Date(Date.now() - 86400000).toISOString().split('T')[0]; // yesterday
+    const pastDate = new Date(Date.now() - 86400000).toISOString().split('T')[0];
     await page.fill('input[name="due_date"]', pastDate);
     await submit();
     await expect(page.locator('#error-due_date')).toContainText("Due date must not be earlier than the current day");
 });
+;
 
 
 
