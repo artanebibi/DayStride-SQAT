@@ -42,11 +42,16 @@ jobs:
         run: |
           k6 run --summary-export=summary.json ./stagingTests/load/daystride_ec2_load_testing.js
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Clone k6-reporter
         run: |
           git clone https://github.com/majodev/k6-reporter.git
           cd k6-reporter
-          npm install
+          npm install --verbose
 
       - name: Generate HTML report
         run: |
