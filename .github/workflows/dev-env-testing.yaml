@@ -7,53 +7,57 @@ jobs:
   dev-testing:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Set Up environment Variables
-      run: |
-        echo "DB_NAME=DEV" >> .env
-        echo "DB_PASSWORD=password" >> .env
-        echo "DJANGO_SECRET=diuwehdibbbiweuhofihoocoiwueroikfi987bg" >> .env
+      - name: Set Up environment Variables
+        run: |
+          echo "DB_NAME=DEV" >> .env
+          echo "DB_PASSWORD=password" >> .env
+          echo "DJANGO_SECRET=diuwehdibbbiweuhofihoocoiwueroikfi987bg" >> .env
 
-    - name: Build and start containers
-      run: |
-        docker compose -f docker-dev.yaml up --build -d
-    - name: Wait for MySQL to be ready
-      run: |
-        echo "Waiting for MySQL to become healthy..."
-        until docker compose exec db mysqladmin ping -h "localhost" --silent; do
-          echo "Waiting for MySQL..."
-          sleep 2
-        done
+      - name: Build and start containers
+        run: |
+          docker compose -f docker-dev.yaml up --build -d
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL to become healthy..."
+          until docker compose exec db mysqladmin ping -h "localhost" --silent; do
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
 
 
-    - name: Run backend integration tests
-      run: |
-        docker compose exec backend pytest --no-cov -v -ra -m integration_large
+      - name: Run backend integration tests
+        run: |
+          docker compose exec backend pytest --no-cov -v -ra -m integration_large
 
-    - name: Run frontend integration tests
-      run: |
-        docker compose exec frontend npm run test:integration-itl
+      - name: Run frontend integration tests
+        run: |
+          docker compose exec frontend npm run test:integration-itl
 
-    - name: Dump backend logs on failure
-      if: failure()
-      run: |
-        echo "==== Backend Logs ===="
-        docker compose logs backend
+      - name: Run frontend UI and SYSTEM/E2E tests
+        run: |
+          docker compose exec frontend npm run test:unit-e2e
 
-    - name: Dump frontend logs on failure
-      if: failure()
-      run: |
-        echo "==== Frontend Logs ===="
-        docker compose logs frontend
+      - name: Dump backend logs on failure
+        if: failure()
+        run: |
+          echo "==== Backend Logs ===="
+          docker compose logs backend
 
-    - name: Tear down
-      if: always()
-      run: docker compose down --volumes
+      - name: Dump frontend logs on failure
+        if: failure()
+        run: |
+          echo "==== Frontend Logs ===="
+          docker compose logs frontend
+
+      - name: Tear down
+        if: always()
+        run: docker compose down --volumes
