@@ -76,7 +76,7 @@ jobs:
 
       - name: Upload EC2_PUBLIC_IP to repo variable
         run: |
-          gh variable set EC2_PUBLIC_IP -b"${{ steps.get_ip.outputs.public_ip }}"
+          gh variable set EC2_PUBLIC_IP -b"http://${{ steps.get_ip.outputs.public_ip }}"
         env:
           GH_TOKEN: ${{ secrets.GH_PAT_CLASSIC }}
 
