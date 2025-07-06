@@ -11,7 +11,8 @@
     "test:ci": "jest --coverage --coverageDirectory=coverage_reports/latest --testPathPatterns=tests/unit tests/integration/in-the-small",
     "test:unit": "jest --coverage --testPathPatterns=tests/unit",
     "test:integration-its": "jest --coverage --testPathPatterns=tests/integration/in-the-small",
-    "test:integration-itl": "jest --coverage --testPathPatterns=tests/integration/in-the-large"
+    "test:integration-itl": "jest --coverage --testPathPatterns=tests/integration/in-the-large",
+    "test:ui": "npx playwright test"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
     "@eslint/js": "^9.29.0",
+    "@playwright/test": "^1.53.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/react": "^19.1.8",
