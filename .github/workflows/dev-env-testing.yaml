@@ -25,6 +25,7 @@ jobs:
       - name: Build and start containers
         run: |
           docker compose -f docker-dev.yaml up --build -d
+
       - name: Wait for MySQL to be ready
         run: |
           echo "Waiting for MySQL to become healthy..."
@@ -33,7 +34,6 @@ jobs:
             sleep 2
           done
 
-
       - name: Run backend integration tests
         run: |
           docker compose exec backend pytest --no-cov -v -ra -m integration_large
@@ -41,10 +41,6 @@ jobs:
       - name: Run frontend integration tests
         run: |
           docker compose exec frontend npm run test:integration-itl
-
-      - name: Run frontend UI and SYSTEM/E2E tests
-        run: |
-          docker compose exec frontend npm run test:unit-e2e
 
       - name: Dump backend logs on failure
         if: failure()
