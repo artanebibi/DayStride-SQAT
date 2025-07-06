@@ -71,7 +71,7 @@ const Dashboard = () => {
                 <div
                     className="bg-gradient-to-br from-blue-300 to-blue-400 rounded-2xl shadow-lg flex overflow-hidden max-w-5xl w-full py-6 pr-6 pl-4">
 
-                    {/* Date */}
+                    {/* Data */}
                     <div className="flex flex-col justify-center items-center text-white p-8 w-32">
                         <div className="text-4xl font-bold">{day}</div>
                         <div className="text-lg mt-1">{month}</div>

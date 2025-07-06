@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
-import {test_user} from './Data/user.js';
-import {loginUser, registerUser} from './Data/authHelpers.js'
+import {test_user} from '../Data/user.js';
+import {loginUser, registerUser} from '../Data/authHelpers.js'
 
 test('Login Successful', async ({page}) => {
 

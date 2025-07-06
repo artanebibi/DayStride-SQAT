@@ -1,6 +1,6 @@
 import axios from '../../../../src/axios/axios';
 import HabitRepository from '../../../../src/repository/HabitRepository';
-import {mockHabits} from '../Mock/mockHabits.js';
+import {habitsArray} from '../Data/habitsArray.js';
 
 describe('HabitRepository', () => {
     const uniqueId = Date.now();
@@ -28,7 +28,7 @@ describe('HabitRepository', () => {
 
         localStorage.setItem('tokens', JSON.stringify(loginResponse.data));
 
-        for (const habit of mockHabits) {
+        for (const habit of habitsArray) {
             const res = await HabitRepository.create(habit);
             expect([200, 201]).toContain(res.status);
             createdHabits.push(res.data);

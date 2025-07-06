@@ -1,4 +1,4 @@
-export const mockTodos = [
+export const todosArray = [
   {
     id: 1,
     name: "Buy groceries",

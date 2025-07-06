@@ -1,6 +1,6 @@
 export const fixedTimestamp = 1751638061472; // Example fixed timestamp
 
-export const mockHabits = [
+export const habitsArray = [
   {
     id: 1,
     name: "Habit 1",

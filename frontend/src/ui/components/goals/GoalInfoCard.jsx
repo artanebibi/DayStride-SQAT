@@ -1,4 +1,4 @@
-// src/ui/components/goals/GoalInfoCard.jsx
+// src/ui-e2e/components/goals/GoalInfoCard.jsx
 import React from 'react';
 import {Card, Text, Badge, Group, Title} from '@mantine/core';
 import {IconMapPin, IconCalendar} from '@tabler/icons-react';
