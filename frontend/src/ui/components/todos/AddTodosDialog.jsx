@@ -39,6 +39,51 @@ const AddTodoDialog = ({open, onClose, onAdd}) => {
     };
 
     const handleSubmit = () => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dueDate = new Date(formData.due_date);
+        let hasError = false;
+
+        const showError = (id, condition) => {
+            const el = document.getElementById(id);
+            if (condition) {
+                el.style.display = 'block';
+                hasError = true;
+            } else {
+                el.style.display = 'none';
+            }
+        };
+
+        showError("error-name",
+            formData.name.trim() === '' ||
+            /^\d$/.test(formData.name.trim()) ||
+            /^\d+$/.test(formData.name.trim())
+        );
+        document.getElementById("error-name").innerText =
+            formData.name.trim() === '' ? "Task name cannot be blank" :
+            /^\d$/.test(formData.name.trim()) ? "Task name cannot be only one digit" :
+            /^\d+$/.test(formData.name.trim()) ? "Task name cannot contain only numbers" : "";
+
+        showError("error-category",
+            formData.category.trim() === '' ||
+            /^\d$/.test(formData.category.trim()) ||
+            /^\d+$/.test(formData.category.trim())
+        );
+        document.getElementById("error-category").innerText =
+            formData.category.trim() === '' ? "Category name cannot be blank" :
+            /^\d$/.test(formData.category.trim()) ? "Category name cannot be only one digit" :
+            /^\d+$/.test(formData.category.trim()) ? "Category name cannot contain only numbers" : "";
+
+        showError("error-description", formData.description.trim() === '');
+        document.getElementById("error-description").innerText =
+            formData.description.trim() === '' ? "Description cannot be blank" : "";
+
+        showError("error-due_date", formData.due_date && dueDate < today);
+        document.getElementById("error-due_date").innerText =
+            formData.due_date && dueDate < today ? "Due date must not be earlier than the current day" : "";
+
+        if (hasError) return;
+
         onAdd(formData);
         setFormData(initialFormData);
         onClose();
@@ -53,12 +98,20 @@ const AddTodoDialog = ({open, onClose, onAdd}) => {
             <DialogContent>
                 <TextField name="name" label="Task Name" value={formData.name} onChange={handleChange} fullWidth
                            margin="dense"/>
+                <div id="error-name" style={{color: 'red', display: 'none'}}></div>
+
                 <TextField name="category" label="Category" value={formData.category} onChange={handleChange} fullWidth
                            margin="dense"/>
+                <div id="error-category" style={{color: 'red', display: 'none'}}></div>
+
                 <TextField name="description" label="Description" value={formData.description} onChange={handleChange}
                            fullWidth multiline rows={3} margin="dense"/>
+                <div id="error-description" style={{color: 'red', display: 'none'}}></div>
+
                 <TextField name="due_date" label="Due Date" type="date" value={formData.due_date}
                            onChange={handleChange} fullWidth InputLabelProps={{shrink: true}} margin="dense"/>
+                <div id="error-due_date" style={{color: 'red', display: 'none'}}></div>
+
                 <TextField name="due_time" label="Due Time" type="time" value={formData.due_time}
                            onChange={handleChange} fullWidth InputLabelProps={{shrink: true}} margin="dense"/>
                 <TextField select name="priority" label="Priority" value={formData.priority} onChange={handleChange}
@@ -84,3 +137,5 @@ const AddTodoDialog = ({open, onClose, onAdd}) => {
 };
 
 export default AddTodoDialog;
+
+

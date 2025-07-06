@@ -1,0 +1,230 @@
+# Page snapshot
+
+```yaml
+- link "Logo DayStride":
+  - /url: /
+  - img "Logo"
+  - paragraph: DayStride
+- link "Dashboard":
+  - /url: /dashboard
+- link "Habits":
+  - /url: /habits
+- link "Todos":
+  - /url: /todos
+- link "Goals":
+  - /url: /goals
+- link "Goal Hub":
+  - /url: /goalhub
+- button "Logout":
+  - img
+  - text: Logout
+- heading "My Todos" [level=1]
+- radiogroup:
+  - radio "Past"
+  - text: Past
+  - radio "Upcoming" [checked]
+  - text: Upcoming
+- textbox "Filter by priority"
+- img
+- textbox "Deadline"
+- img
+- button "Add Todo":
+  - img
+  - text: Add Todo
+- separator
+- heading "Test Task1751826750427" [level=4]
+- paragraph: Description for Test Task1751826750427
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751826750427"
+- paragraph: "Status:"
+- img
+- text: Completed
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751826852297" [level=4]
+- paragraph: Description for Test Task1751826852297
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751826852297"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751826871475" [level=4]
+- paragraph: Description for Test Task1751826871475
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751826871475"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751826890405" [level=4]
+- paragraph: Description for Test Task1751826890405
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751826890405"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751826910922" [level=4]
+- paragraph: Description for Test Task1751826910922
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751826910922"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827009919" [level=4]
+- paragraph: Description for Test Task1751827009919
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827009919"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827259383" [level=4]
+- paragraph: Description for Test Task1751827259383
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827259383"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827310091" [level=4]
+- paragraph: Description for Test Task1751827310091
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827310091"
+- paragraph: "Status:"
+- img
+- text: Completed
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827445941" [level=4]
+- paragraph: Description for Test Task1751827445941
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827445941"
+- paragraph: "Status:"
+- img
+- text: Completed
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827532504" [level=4]
+- paragraph: Description for Test Task1751827532504
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827532504"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827568264" [level=4]
+- paragraph: Description for Test Task1751827568264
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827568264"
+- paragraph: "Status:"
+- img
+- text: Overdue
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751827810045" [level=4]
+- paragraph: Description for Test Task1751827810045
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751827810045"
+- paragraph: "Status:"
+- img
+- text: Completed
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+- heading "Test Task1751828047924" [level=4]
+- paragraph: Description for Test Task1751828047924
+- img
+- text: 7/16/2025
+- img
+- text: "12:34 Priority: 3 Test Task category1751828047924"
+- paragraph: "Status:"
+- img
+- text: Completed
+- button "Edit":
+  - img
+  - text: Edit
+- button "Delete":
+  - img
+  - text: Delete
+```
